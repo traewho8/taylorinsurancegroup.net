@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Taylor Insurance Group | Insurance Tailored to You</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --navy: #0a1628;
+    --gold: #c9a84c;
+    --gold-light: #e8c97a;
+    --cream: #f8f4ee;
+    --white: #ffffff;
+    --gray: #6b7280;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--navy);
+    color: var(--white);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Background texture */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse at 20% 20%, rgba(201,168,76,0.08) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 80%, rgba(201,168,76,0.05) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* NAV */
+  nav {
+    padding: 28px 0;
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+    position: relative;
+    z-index: 1;
+  }
+
+  nav .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+  }
+
+  .logo-icon {
+    width: 42px;
+    height: 42px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 20px;
+    color: var(--navy);
+  }
+
+  .logo-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    color: var(--white);
+    line-height: 1.2;
+  }
+
+  .logo-text span {
+    display: block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 300;
+    color: var(--gold);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .nav-cta {
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    padding: 10px 24px;
+    border-radius: 6px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    letter-spacing: 0.5px;
+  }
+
+  .nav-cta:hover {
+    background: var(--gold);
+    color: var(--navy);
+  }
+
+  /* HERO */
+  .hero {
+    padding: 100px 0 80px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(201,168,76,0.1);
+    border: 1px solid rgba(201,168,76,0.3);
+    padding: 8px 18px;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--gold);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 36px;
+    animation: fadeUp 0.6s ease both;
+  }
+
+  .hero-badge::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: var(--gold);
+    border-radius: 50%;
+  }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(42px, 7vw, 80px);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 24px;
+    animation: fadeUp 0.6s ease 0.1s both;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .hero-sub {
+    font-size: clamp(16px, 2vw, 20px);
+    font-weight: 300;
+    color: rgba(255,255,255,0.65);
+    max-width: 520px;
+    margin: 0 auto 48px;
+    line-height: 1.7;
+    animation: fadeUp 0.6s ease 0.2s both;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+    animation: fadeUp 0.6s ease 0.3s both;
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    color: var(--navy);
+    padding: 16px 36px;
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    letter-spacing: 0.3px;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(201,168,76,0.3);
+  }
+
+  .btn-secondary {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: var(--white);
+    padding: 16px 36px;
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .btn-secondary:hover {
+    background: rgba(255,255,255,0.1);
+    border-color: rgba(255,255,255,0.3);
+  }
+
+  /* DIVIDER */
+  .divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(201,168,76,0.3), transparent);
+    margin: 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* PILLARS */
+  .pillars {
+    padding: 80px 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 24px;
+  }
+
+  .pillar {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    padding: 32px 28px;
+    transition: all 0.3s ease;
+  }
+
+  .pillar:hover {
+    background: rgba(201,168,76,0.06);
+    border-color: rgba(201,168,76,0.2);
+    transform: translateY(-4px);
+  }
+
+  .pillar-icon {
+    font-size: 28px;
+    margin-bottom: 16px;
+  }
+
+  .pillar h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: var(--white);
+  }
+
+  .pillar p {
+    font-size: 14px;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  /* CONTACT */
+  .contact {
+    padding: 80px 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  .contact-card {
+    background: rgba(201,168,76,0.06);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 20px;
+    padding: 60px 48px;
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  .contact-card h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 40px);
+    margin-bottom: 16px;
+  }
+
+  .contact-card p {
+    color: rgba(255,255,255,0.6);
+    font-size: 16px;
+    font-weight: 300;
+    margin-bottom: 40px;
+    line-height: 1.7;
+  }
+
+  .contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 15px;
+    color: var(--white);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .contact-item:hover { color: var(--gold); }
+
+  .contact-item .icon {
+    width: 36px;
+    height: 36px;
+    background: rgba(201,168,76,0.15);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding: 32px 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  footer .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  footer p {
+    font-size: 13px;
+    color: rgba(255,255,255,0.35);
+    font-weight: 300;
+  }
+
+  .footer-license {
+    font-size: 12px;
+    color: rgba(255,255,255,0.25);
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* MOBILE */
+  @media (max-width: 600px) {
+    .nav-cta { display: none; }
+    .contact-card { padding: 40px 24px; }
+    footer .container { justify-content: center; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <a href="/" class="logo">
+      <div class="logo-icon">T</div>
+      <div class="logo-text">
+        Taylor Insurance Group
+        <span>Insurance Tailored to You</span>
+      </div>
+    </a>
+    <a href="/cdn-cgi/l/email-protection#acd8decdc9ecd8cdd5c0c3dec5c2dfd9decdc2cfc9cbdec3d9dc82c2c9d8" class="nav-cta">Get in Touch</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-badge">Licensed Florida Insurance Agency</div>
+    <h1>Protection built<br>around <em>your</em> family.</h1>
+    <p class="hero-sub">Life insurance solutions tailored to where you are in life — from protecting your home to building generational wealth for your children.</p>
+    <div class="hero-actions">
+      <a href="/cdn-cgi/l/email-protection#73070112163307120a1f1c011a1d000601121d101614011c06035d1d1607" class="btn-primary">Schedule a Free Consultation</a>
+      <a href="tel:+1" class="btn-secondary">Call Us Today</a>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="pillars">
+  <div class="container">
+    <div class="pillars-grid">
+      <div class="pillar">
+        <div class="pillar-icon">🏠</div>
+        <h3>Mortgage Protection</h3>
+        <p>If something happens to you, your family keeps the home. Simple, affordable, and faster to set up than most people think.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">👶</div>
+        <h3>Juvenile Whole Life</h3>
+        <p>Lock in the best rates your child will ever get — starting at birth. Paid up before they turn 21. Cash value they can use for life.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">🛡️</div>
+        <h3>Term Life Insurance</h3>
+        <p>Maximum coverage at the lowest cost. Protect your income and your family during the years that matter most.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">💼</div>
+        <h3>Final Expense</h3>
+        <p>Guaranteed acceptance options available. Give your family the gift of not having to worry about costs when it matters least.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="contact">
+  <div class="container">
+    <div class="contact-card">
+      <h2>Let's find the right fit for your family.</h2>
+      <p>No pressure, no jargon. Just an honest conversation about what makes sense for where you are right now.</p>
+      <div class="contact-info">
+        <a href="/cdn-cgi/l/email-protection#bacec8dbdffacedbc3d6d5c8d3d4c9cfc8dbd4d9dfddc8d5cfca94d4dfce" class="contact-item">
+          <div class="icon">✉️</div>
+          <span class="__cf_email__" data-cfemail="2f5b5d4e4a6f5b4e5643405d46415c5a5d4e414c4a485d405a5f01414a5b">[email&#160;protected]</span>
+        </a>
+        <a href="#" class="contact-item">
+          <div class="icon">📍</div>
+          St. Petersburg, Florida
+        </a>
+        <div class="contact-item">
+          <div class="icon">🪪</div>
+          FL 2-15 Licensed
+        </div>
